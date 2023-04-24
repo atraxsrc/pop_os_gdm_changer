@@ -32,4 +32,19 @@ sudo ./popgmdchanger.sh --image /PATH/TO/YOUR/IMAGE
 ```
 Where --image /PATH/TO/YOUR/IMAGE is the chosen image.
 
+## Using a Blurred Image as GDM Background
+
+### If you prefer a blurred picture for your GDM background, the most efficient method is to select an image and then blur it using the Lunapic website. Follow these steps:
+
+1. Visit [Lunapic](https://www2.lunapic.com/editor/?action=blur) to access their online image editor.
+2. Upload your chosen image.
+3. Apply the blur effect as desired.
+4. Save the blurred image to your computer.
+
+Once you have the blurred image, you can set it as your GDM background using the script as described earlier.
+
+```bash
+sudo ./popgmdchanger.sh --image /PATH/TO/YOUR/BLURRED/IMAGE
+```
+
 
