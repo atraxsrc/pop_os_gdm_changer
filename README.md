@@ -2,7 +2,7 @@
 
 Linux always offers a way to overcome obstacles. With its dynamic nature, the concept of a restricted environment for users doesn't hinder adaptability. As a Pop!_OS user, I've become accustomed to the brown GDM login screen as an integral aspect of the OS. Although it's not terrible, it's not the most attractive color and offers no alternatives.
 
-I was thrilled to discover a script on GitHub that claimed to modify the GDM theme (image, color, or gradient), thanks to UbuntuHandbook's team who shared the news about this excellent script by Pratak Kumar. The author emphasized that the script was designed exclusively for Ubuntu and included a test for that condition.
+I was thrilled to discover a script on GitHub that claimed to modify the GDM theme (image, color, or gradient), thanks to UbuntuHandbook's team who shared the news about this excellent script by [Pratak Kumar](https://github.com/PRATAP-KUMAR/ubuntu-gdm-set-background). The author emphasized that the script was designed exclusively for Ubuntu and included a test for that condition.
 
 Unlike many people, I make sure scripts produce only the desired outcome by using my Crash Test VM for all scripting tasks. I carefully analyze any changes when I come across something intriguing that can bring joy. I strongly discourage running scripts without a sandbox or crash test machine, just as with modifying kernels or untrusted sources.
 
