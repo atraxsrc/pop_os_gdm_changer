@@ -18,9 +18,6 @@ This will not alter the drive encryption screen's background. I have no desire f
 
 This enables you to change the default GDM login screen to your preference. When using a background image, I recommend a fixed path to a locally stored image to prevent issues. Relative paths or remote images won't work and may result in a broken login screen.
 
-The script requires sudo privileges (never run anything as root, right?) and should be thoroughly examined to understand the options and recovery process. The primary distinction is that you're invoking the `pop-gdm-set-background` script, NOT `ubuntu-gdm-set-background`. I have written this exclusively for Pop!_OS 22.04, but you can adapt it for other releases if desired.
-
-Apologies for the delayed response – work sometimes takes precedence. This is a bash script. Copy the script and name it as you wish. For simplicity, let's call it `mybackground.sh`. Store it in your script directory. Make it executable:
 
 ```bash
 chmod 700 popgmdchanger.sh
