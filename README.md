@@ -1,47 +1,46 @@
-# Customize GDM Background for Pop!_OS 22.04 Jammy Jellyfish
+# Personalize GDM Background for Pop!_OS 22.04 Jammy Jellyfish
 
-Linux always offers a way to overcome obstacles. With its dynamic nature, the concept of a restricted environment for users doesn't hinder adaptability. As a Pop!_OS user, I've become accustomed to the brown GDM login screen as an integral aspect of the OS. Although it's not terrible, it's not the most attractive color and offers no alternatives.
+Linux's flexibility consistently paves the way to surmount challenges. As an avid Pop!_OS user, the standard brown GDM login screen has become a familiar part of the OS. Although it's not distasteful, the color could be more appealing, and the absence of alternatives is noticeable.
 
-I was thrilled to discover a script on GitHub that claimed to modify the GDM theme (image, color, or gradient), thanks to UbuntuHandbook's team who shared the news about this excellent script by [Pratak Kumar](https://github.com/PRATAP-KUMAR/ubuntu-gdm-set-background). The author emphasized that the script was designed exclusively for Ubuntu and included a test for that condition.
+Fortunately, I found a script on GitHub, courtesy of UbuntuHandbook's team, developed by Pratak Kumar, which allows you to modify the GDM theme (image, color, or gradient). The script was initially intended for Ubuntu, and a corresponding compatibility check was included.
 
-Unlike many people, I make sure scripts produce only the desired outcome by using my Crash Test VM for all scripting tasks. I carefully analyze any changes when I come across something intriguing that can bring joy. I strongly discourage running scripts without a sandbox or crash test machine, just as with modifying kernels or untrusted sources.
+To ensure that scripts operate as expected, I use my Crash Test VM for all scripting tasks. It is my practice to analyze any alterations meticulously whenever I come across something potentially beneficial. It is advisable to refrain from executing scripts without a sandbox or crash test environment, especially when meddling with kernels or untrusted sources.
 
-Nonetheless, you can dissect and examine a script because its source is accessible and editable as needed. If you're unsure about a script's functionality, avoid using it. Seriously.
+However, you have the freedom to inspect and edit a script because its source code is available and modifiable as needed. If you're uncertain about a script's operation, it's best to refrain from using it.
 
-Below is my customized script for setting the GDM Background on Pop!_OS 22.04 Jammy Jellyfish. I tweaked the script, tested it, and it works great for me.
+Presented below is my personalized script for changing the GDM Background on Pop!_OS 22.04 Jammy Jellyfish. After fine-tuning and testing, the script works perfectly for my use-case.
 
-## What not to expect
+## Setting Expectations
+**What it won't do**
+This script will not change the background of the drive encryption screen, which is not something I wish to happen.
 
-This will not alter the drive encryption screen's background. I have no desire for that to occur.
+**What it will do**
+The script allows you to tailor the default GDM login screen according to your preferences. When setting a background image, I advise using an absolute path to a locally stored image to avoid any issues. Relative paths or remote images may not work and could possibly break the login screen.
 
-## What to expect
-
-This enables you to change the default GDM login screen to your preference. When using a background image, I recommend a fixed path to a locally stored image to prevent issues. Relative paths or remote images won't work and may result in a broken login screen.
-
+To execute the script, first make it executable:
 
 ```bash
 chmod 700 popgmdchanger.sh
 ```
-Then execute it with sudo privileges:
-
+## Then, execute it with sudo privileges:
 ```bash
 sudo ./popgmdchanger.sh --image /PATH/TO/YOUR/IMAGE
 ```
-Where --image /PATH/TO/YOUR/IMAGE is the chosen image.
+Where --image /PATH/TO/YOUR/IMAGE is your selected image.
 
 ## Using a Blurred Image as GDM Background
 
-### If you prefer a blurred picture for your GDM background, the most efficient method is to select an image and then blur it using the Lunapic website. Follow these steps:
+If you're interested in using a blurred image for your GDM background, a practical method involves choosing an image and applying blur through the Lunapic website. The procedure is as follows:
 
-1. Visit [Lunapic](https://www2.lunapic.com/editor/?action=blur) to access their online image editor.
+1. Visit the online image editor on the [Lunapic website](https://www12.lunapic.com/editor/?action=blur).
 2. Upload your chosen image.
-3. Apply the blur effect as desired.
-4. Save the blurred image to your computer.
+3. Apply the blur effect as per your liking.
+4. Save the blurred image onto your local machine.
 
-Once you have the blurred image, you can set it as your GDM background using the script as described earlier.
+Once your blurred image is prepared, you can set it as your GDM background by using the script as mentioned earlier:
 
 ```bash
 sudo ./popgmdchanger.sh --image /PATH/TO/YOUR/BLURRED/IMAGE
 ```
-
+Please remember to replace `/PATH/TO/YOUR/BLURRED/IMAGE` with the actual path of your blurred image.
 
