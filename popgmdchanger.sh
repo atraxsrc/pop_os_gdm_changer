@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#Based off the work of Pratak Kumar for Ubuntu, but adapted specifically for Pop!_OS 22.04 Jammy
+# Adaptation of Pratak Kumar's script for Ubuntu, specifically tailored for Pop!_OS 22.04 Jammy
 
-# Colors
+# Define color variables for colored output in the terminal
 Red='\e[0;31m';     
 BRed='\e[1;31m'; 
 BIRed='\e[1;91m';
@@ -12,13 +12,16 @@ BBlu='\e[1;34m';
 BWhi='\e[1;37m';
 RCol='\e[0m';
 
+# Retrieve the codename and OS name from the system's OS release information
 codename=$(cat /etc/os-release | grep UBUNTU_CODENAME | cut -d = -f 2)
 osname=$(cat /etc/os-release | grep '="Pop!_OS"' | cut -d = -f 2)
 
+# Check if the script is running on Pop!_OS 22.04
 if [ "$codename" == "jammy" ] && [ "$osname" == '"Pop!_OS"' ]; then
   source="/usr/share/gnome-shell/theme/Pop/gnome-shell-theme.gresource"
   GDM_RESOURCE_CONFIG_NAME="gdm"
 
+# Output error message and exit if not running on Pop!_OS 22.04.
 else
   echo -e "${Red}
 ------------------------------------------------------------------
@@ -29,8 +32,10 @@ ${RCol}"
   exit 1
 fi
 
+# Check if the necessary package 'libglib2.0-dev-bin' is installed.
 pkg=$(dpkg -l | grep libglib2.0-dev-bin >/dev/null && echo "yes" || echo "no")
 if [ "$pkg" == "no" ]; then
+# Output error message and exit if the package is not installed.
   echo -e "${Red}
 -----------------------------------------------------------------------------------------------------
 Sorry, the package ${BWhi}'libglib2.0-dev-bin'${Red} is not installed. 
@@ -40,10 +45,12 @@ For now, Exiting...
   exit 1
 fi
 
+# Define the destination directory for the custom GDM.
 dest="/usr/local/share/gnome-shell/custom-gdm"
 color='#456789'
 
 ###################################################
+# Function to display help information.
 HELP() {
 
   echo -e "
@@ -86,7 +93,9 @@ ${BRed}Please note that for 'RESCUE_MODE' active internet connection is necessar
 ###################################################
 
 ###################################################
+# Function to perform initial routine checks.
 ROUTINE_CHECK() {
+  # Checks for script execution permissions and prepares the environment.
   if [ "$UID" != "0" ]; then
     echo -e "${BRed}This script must be run with sudo${RCol}"
     exit 1
@@ -105,7 +114,9 @@ ROUTINE_CHECK() {
 ###################################################
 
 ###################################################
+# Function for handling rescue mode operations.
 RESCUE_MODE() {
+  # Attempts to fix issues by reinstalling the yaru-theme-gnome-shell package.
   echo -e "
 >>>>> Trying to ${BWhi}reinstall${RCol} the package yaru-theme-gnome-shell,
 if the reinstallation of the package is succesful, background change will be done
@@ -121,7 +132,9 @@ SCRIPT COULD NOT FINISH THE JOB, FAILURE, NO CHANGES WERE DONE.${RCol}"
 ###################################################
 
 ###################################################
+# Function to extract GDM theme resources.
 EXTRACT() {
+  # Extracts gnome-shell resources for customization.
   for r in $(gresource list $source); do
     t="${r/#\/org\/gnome\/shell\//}"
     mkdir -p $(dirname $t)
@@ -131,7 +144,10 @@ EXTRACT() {
 ###################################################
 
 ###################################################
+# Function to create a custom XML for the GDM theme.
 CREATE_XML() {
+  # Assembles and writes a custom XML for the GDM theme modification.
+
   extractedFiles=$(find "theme" -type f -printf "%P\n" | xargs -i echo "    <file>{}</file>")
   cat <<EOF >"theme/custom-gdm-background.gresource.xml"
 <?xml version="1.0" encoding="UTF-8"?>
@@ -145,7 +161,9 @@ EOF
 ###################################################
 
 ###################################################
+# Function to update GDM resource with custom settings.
 SET_GRESOURCE() {
+  # Applies the custom GDM theme and performs a check to confirm success.
   cd $dest
   update-alternatives --quiet --install /usr/share/gnome-shell/$GDM_RESOURCE_CONFIG_NAME-theme.gresource $GDM_RESOURCE_CONFIG_NAME-theme.gresource $dest/custom-gdm-background.gresource 0
   update-alternatives --quiet --set $GDM_RESOURCE_CONFIG_NAME-theme.gresource $dest/custom-gdm-background.gresource
