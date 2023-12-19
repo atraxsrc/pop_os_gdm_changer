@@ -12,21 +12,20 @@ Presented below is my personalized script for changing the GDM Background on Pop
 
 ## Setting Expectations
 **What it won't do**
-This script will not change the background of the drive encryption screen, which is not something I wish to happen.
+- This script will not change the background of the drive encryption screen, which is not something I wish to happen.
 
 **What it will do**
-The script allows you to tailor the default GDM login screen according to your preferences. When setting a background image, I advise using an absolute path to a locally stored image to avoid any issues. Relative paths or remote images may not work and could possibly break the login screen.
+- The script allows you to tailor the default GDM login screen according to your preferences. When setting a background image, I advise using an absolute path to a locally stored image to avoid any issues. Relative paths or remote images may not work and could possibly break the login screen.
 
 To execute the script, first make it executable:
-
 ```bash
 chmod 700 popgmdchanger.sh
 ```
-## Then, execute it with sudo privileges:
+## Executing the Script with sudo privileges:
 ```bash
 sudo ./popgmdchanger.sh --image /PATH/TO/YOUR/IMAGE
 ```
-Where --image /PATH/TO/YOUR/IMAGE is your selected image.
+Replace --image /PATH/TO/YOUR/IMAGE with the path to your selected image.
 
 ## Using a Blurred Image as GDM Background
 
